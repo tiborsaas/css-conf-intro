@@ -1,0 +1,27 @@
+{
+  "name": "css-conf-intro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "orbit-controls-es6": "^2.0.0",
+    "popmotion": "^8.7.0",
+    "three": "^0.108.0"
+  },
+  "devDependencies": {
+    "cssnano": "^4.1.10"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tiborsaas/css-conf-intro.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tiborsaas/css-conf-intro/issues"
+  },
+  "homepage": "https://github.com/tiborsaas/css-conf-intro#readme"
+}

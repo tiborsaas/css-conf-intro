@@ -64,6 +64,7 @@ var CSS3DRenderer = function () {
 	this.domElement = domElement;
 
 	var cameraElement = document.createElement( 'div' );
+	cameraElement.className = 'camera-element';
 
 	cameraElement.style.WebkitTransformStyle = 'preserve-3d';
 	cameraElement.style.transformStyle = 'preserve-3d';

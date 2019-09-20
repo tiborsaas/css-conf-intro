@@ -9,11 +9,25 @@ export class SceneManager {
         this.renderer = renderer;
         this.camera = camera;
 
+        this.logoStyleUpdate = styler(document.querySelector('.logo'));
         this.rootStyleUpdate = styler(renderer.domElement);
+    }
+
+    clearScene() {
+        this.renderer.domElement.querySelector('.camera-element').innerHTML = '';
+    }
+
+    getCurrentScene() {
+        return this.movie[this.currentScene].scene;
     }
 
     getCurrentSceneContext() {
         return this.movie[this.currentScene].context;
+    }
+
+    start() {
+        this.render();
+        this.playNext();
     }
 
     add(id, scene, {context, timeline}) {
@@ -25,27 +39,29 @@ export class SceneManager {
         });
     }
 
-    start() {
-        this.render();
-        this.playNext();
-    }
-
-    getCurrentScene() {
-        return this.movie[this.currentScene].scene;
-    }
-
-    clearScene() {
-        this.renderer.domElement.querySelector('.camera-element').innerHTML = '';
+    splitTimelineObject(timelineObject) {
+        return Object.keys(timelineObject).reduce((obj, curr) => {
+            if(curr.indexOf(':') !== -1) {
+                const targetAndKey = curr.split(':');
+                if(!obj[targetAndKey[0]]) {
+                    obj[targetAndKey[0]] = {};
+                }
+                obj[targetAndKey[0]] = Object.assign( obj[targetAndKey[0]], { [targetAndKey[1]] : timelineObject[curr] });
+            }
+            return obj;
+        }, {});
     }
 
     playNext() {
+        const context = this.getCurrentSceneContext();
         this.movie[this.currentScene].timeline.start({
             update: track => {
-                const context = this.getCurrentSceneContext();
                 if (context) {
                     Object.keys(context).forEach(key => context[key](track[key], this));
                 }
-                this.rootStyleUpdate.set(track);
+                const updaters = this.splitTimelineObject(track);
+                this.rootStyleUpdate.set(updaters.scene);
+                this.logoStyleUpdate.set(updaters.logo);
             },
             complete: () => {
                 this.currentScene++;

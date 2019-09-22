@@ -1,11 +1,10 @@
 import {
     Group,
+    Color,
     Vector3,
-    Math as tMath
 } from 'three';
 
 import { createFace } from './CSSFace';
-const { clamp } = tMath;
 
 export class CSSBoxMesh extends Group {
     constructor(scalarVec, options = {}) {
@@ -45,20 +44,5 @@ export class CSSBoxMesh extends Group {
         this.add(rightPlane);
         this.add(topPlane);
         this.add(bottomPlane);
-    }
-
-    applyLight(lightSource) {
-        this.children.forEach(cssObj => this.shadeFace(lightSource, cssObj));
-    }
-
-    shadeFace(lightSource, cssObj) {
-        const facePos = cssObj.position.clone().applyQuaternion(cssObj.parent.quaternion);
-        const faceNormal = facePos.normalize();
-
-        const lightNormal = lightSource.clone().sub(cssObj.parent.position).normalize();
-        const light = clamp(lightNormal.dot(faceNormal), 0, 1);
-
-        const color = light * 255;
-        cssObj.element.style.backgroundColor = `rgb(${color},${color},${color})`;
     }
 }

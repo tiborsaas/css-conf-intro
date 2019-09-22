@@ -22,6 +22,7 @@ export function createFace(options, position, rotation) {
     const pos = new Vector3(px, py, pz);
     const rot = new Euler(rx * tMath.DEG2RAD, ry * tMath.DEG2RAD, rz * tMath.DEG2RAD);
 
+    cObj.color = color;
     cObj.position.copy(pos);
     cObj.rotation.copy(rot);
 

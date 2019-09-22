@@ -9,7 +9,7 @@ const randomInt = num => floor(random() * num);
 const OBJECTS = 6;
 
 for (let x = 0; x < OBJECTS; x++) {
-    const scale = new Vector3(200, 200, 200);
+    const scale = new Vector3(200, 200, 2000);
     const cubeObject = new CSSBoxMesh(scale);
     scene.add(cubeObject);
 }

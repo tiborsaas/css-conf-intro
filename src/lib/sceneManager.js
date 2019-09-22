@@ -1,20 +1,28 @@
 import { styler } from 'popmotion';
+import { DOMLights } from '../three-css/DOMLights';
 
 export class SceneManager {
     constructor(renderer, camera) {
         this.movie = [];
         this.playing = true;
-        this.currentScene = 0;
+        this.currentScene = 4
 
         this.renderer = renderer;
         this.camera = camera;
 
         this.logoStyleUpdate = styler(document.querySelector('.logo'));
         this.rootStyleUpdate = styler(renderer.domElement);
+        this.perspective = renderer.domElement.style.perspective;
+        this.lightModel = new DOMLights();
     }
 
     clearScene() {
         this.renderer.domElement.querySelector('.camera-element').innerHTML = '';
+    }
+
+    setSceneId() {
+        const movie = this.movie[this.currentScene];
+        this.renderer.domElement.querySelector('.camera-element').id = movie.id;
     }
 
     getCurrentScene() {
@@ -53,6 +61,7 @@ export class SceneManager {
     }
 
     playNext() {
+        this.setSceneId();
         const context = this.getCurrentSceneContext();
         this.movie[this.currentScene].timeline.start({
             update: track => {
@@ -76,9 +85,20 @@ export class SceneManager {
         });
     }
 
+    shadeScene() {
+        const scene = this.getCurrentScene();
+        if(scene.pointLight) {
+            scene.children.forEach(child => {
+                this.lightModel.updateGroup(child);
+                this.lightModel.set(scene.pointLight);
+            });
+        }
+    }
+
     render() {
         requestAnimationFrame(this.render.bind(this));
         if(this.playing) {
+            this.shadeScene();
             this.renderer.render(this.getCurrentScene(), this.camera);
         }
     };

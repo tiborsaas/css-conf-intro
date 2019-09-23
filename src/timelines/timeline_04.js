@@ -7,7 +7,8 @@ const timeline = [
     [
         { track: 'logo:opacity', from: 1, to: 0, duration: 300 },
         { track: 'setupCamera', from: 1000, to: 250, duration: 5000 },
-        { track: 'spinCube', from: 0, to: 45, duration: 30000, ease: easing.easeOut },
+        '2000',
+        { track: 'spinCube', from: 45, to: 90, duration: 30000, ease: easing.easeOut },
     ],
     '-1000',
     { track: 'scene:filter', from: 'blur(0px)', to: 'blur(15px)', duration: 1000 },
@@ -19,7 +20,7 @@ const timeline = [
 const context = {
     setupCamera: (val, ctx) => {
         ctx.camera.position.z = val;
-        ctx.camera.position.x = 0; //65
+        ctx.camera.position.x = 0;
     },
     spinCube: (val, ctx) => {
         const scene = ctx.getCurrentScene();

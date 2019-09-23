@@ -2,16 +2,17 @@ import { TimelineManager } from '../lib/timelineManager';
 import { backInOut } from '@popmotion/easing';
 import { Math as M } from 'three';
 import { getPerspective } from '../three-utils/getPerspective';
+const SPEEDUP = 1;
 
 const timeline = [
     [
         { track: 'logo:opacity', from: 0, to: 1, duration: 2500 },
-        { track: 'scene:perspective', from: '1px', duration: 10000 / 20 },
-        { track: 'cameraY', from: 50, to: 60, duration: 10000 / 20 },
-        { track: 'cameraZ', from: 500, to: 600, duration: 10000 / 20 },
+        { track: 'scene:perspective', from: '1px', duration: 10000 / SPEEDUP },
+        { track: 'cameraY', from: 50, to: 60, duration: 10000 / SPEEDUP },
+        { track: 'cameraZ', from: 500, to: 600, duration: 10000 / SPEEDUP },
     ],
     [
-        { track: 'scene:perspective', from: '1px', to: getPerspective(), duration: 10000 / 20 },
+        { track: 'scene:perspective', from: '1px', to: getPerspective(), duration: 10000 / SPEEDUP },
     ],
     [
         // { track: 'logo:transform', from: 'skewX(70deg) translateX(-100%)', to: 'skewX(0deg) translateX(0%)', duration: 2500, ease: backInOut },

@@ -24,13 +24,30 @@ body, html {
     right: 0;
     /* background-image: linear-gradient(0deg, #ff0000 16.67%, #27e620 16.67%, #27e620 33.33%, #001eff 33.33%, #001eff 50%, #ff0000 50%, #ff0000 66.67%, #27e620 66.67%, #27e620 83.33%, #001eff 83.33%, #001eff 100%); */
     /* background-size: 12.00px 12.00px; */
-    background-image: linear-gradient(0deg, #09ff00 25%, #0cb806 25%, #0cb806 50%, #09ff00 50%, #09ff00 75%, #0cb806 75%, #0cb806 100%);
+    /* background-image: linear-gradient(0deg, #09ff00 25%, #0cb806 25%, #0cb806 50%, #09ff00 50%, #09ff00 75%, #0cb806 75%, #0cb806 100%); */
     background-size: 8.00px 8.00px;
-    z-index: -2;
+    z-index: 0;
     position: fixed;
     mix-blend-mode: overlay; /* color */
     box-shadow: rgba(0, 0, 0, 0.75) 0 0 87px inset;
-    display: none;
+    /* display: none; */
+    /* background: conic-gradient(#fff 0.25turn, #000 0.25turn 0.5turn, #fff 0.5turn 0.75turn, #000 0.75turn) top left / 4px 4px repeat; */
+}
+
+#chamber div {
+    /* background-image: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,70,1) 38%, rgba(106,70,252,1) 38%, rgba(114,252,70,1) 87%, rgba(114,252,70,1) 87%, rgba(114,252,70,1) 87%, rgba(70,83,252,1) 87%); */
+    background-image: radial-gradient(circle, rgba(74,255,255,1) 0%, rgba(93,93,255,1) 28%, rgba(255,99,71,1) 50%, rgba(230,230,250,1) 86%);
+    background-size: 120px 120px;
+    background-position: center;
+}
+
+@keyframes TRIP {
+    0% {
+        background-size: 20px 20px;
+    }
+    100% {
+        background-size: 120px 120px;
+    }
 }
 
 #tunnel div {
@@ -39,6 +56,22 @@ body, html {
 }
 
 #cards div {
+    position: relative;
+}
+
+#cards div:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
     background-image: linear-gradient(45deg, #ffffff 25%, #000000 25%, #000000 50%, #ffffff 50%, #ffffff 75%, #000000 75%, #000000 100%);
-    background-size: 45px 45px;
+    background-size: 65px 65px;
+    mix-blend-mode: multiply;
+}
+
+#liftoff div {
+    /* background-image: linear-gradient(0deg, #ffffff 25%, tomato 25%, tomato 50%, #ffffff 50%, #ffffff 75%, tomato 75%, tomato 100%); */
+    background-size: 85px 85px;
 }

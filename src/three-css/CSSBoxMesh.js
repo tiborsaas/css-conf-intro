@@ -20,9 +20,12 @@ export class CSSBoxMesh extends Group {
         const {
             opacity = 1,
             color = 0xffffff,
+            disable = {},
         } = this.options;
 
         const { x: sx, y: sy, z: sz } = this.scalarVec;
+        const { front, back, left, right, top, bottom } = disable;
+
         const position = {
             front: new Vector3(0, 0, 0.5),
             back: new Vector3(0, 0, -0.5),
@@ -38,11 +41,11 @@ export class CSSBoxMesh extends Group {
         const topPlane = createFace({ width: sx, height: sz, opacity, color }, position.top.multiplyScalar(sy), { x: 90, y: 0, z: 0 });
         const bottomPlane = createFace({ width: sx, height: sz, opacity, color }, position.bottom.multiplyScalar(sy), { x: 90, y: 0, z: 0 });
 
-        this.add(frontPlane);
-        this.add(backPlane);
-        this.add(leftPlane);
-        this.add(rightPlane);
-        this.add(topPlane);
-        this.add(bottomPlane);
+        !front && this.add(frontPlane);
+        !back && this.add(backPlane);
+        !left && this.add(leftPlane);
+        !right && this.add(rightPlane);
+        !top && this.add(topPlane);
+        !bottom && this.add(bottomPlane);
     }
 }

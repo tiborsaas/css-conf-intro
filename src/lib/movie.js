@@ -15,6 +15,9 @@ import Timeline04 from '../timelines/timeline_04';
 import Scene05 from '../scenes/scene_05';
 import Timeline05 from '../timelines/timeline_05';
 
+import Scene06 from '../scenes/scene_06';
+import Timeline06 from '../timelines/timeline_06';
+
 export function start(renderer, camera) {
     const movie = new SceneManager(renderer, camera);
     movie.add('intro', Scene01, Timeline01);
@@ -22,5 +25,7 @@ export function start(renderer, camera) {
     movie.add('chamber', Scene03, Timeline03);
     movie.add('tunnel', Scene04, Timeline04);
     movie.add('cards', Scene05, Timeline05);
+    movie.add('liftoff', Scene06, Timeline05); // wong timeline
+    movie.add('liftoff', Scene06, Timeline06); // wong timeline
     movie.start();
 }

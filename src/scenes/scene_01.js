@@ -12,10 +12,13 @@ const ROWS = 3;
 
 for (let x = -3; x < COLS - 3; x++) {
     for (let y = -1; y < ROWS - 1; y++) {
-        const scale = new Vector3(random() * 200, random() * 200, random() * 500);
+        const height = (x > -2 && x < 2 && y == 0 ) ? random() * 20 : random() * 200;
+        const width = (x > -2 && x < 2 && y == 0 ) ? random() * 20 : random() * 200;
+        const displace = (x > -2 && x < 2 && y == 0 ) ? 20 : 0;
+        const scale = new Vector3(width, height, random() * 500);
         const cubeObject = new CSSBoxMesh(scale);
         cubeObject.translateX(250 * x);
-        cubeObject.translateY(250 * y);
+        cubeObject.translateY(250 * y + displace);
 
         const rotateY = 90 * floor(random() - 1);
         cubeObject.rotateY(rotateY);

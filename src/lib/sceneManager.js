@@ -5,13 +5,14 @@ export class SceneManager {
     constructor(renderer, camera) {
         this.movie = [];
         this.playing = true;
-        this.currentScene = 4
+        this.currentScene = 0
 
         this.renderer = renderer;
         this.camera = camera;
 
         this.logoStyleUpdate = styler(document.querySelector('.logo'));
         this.rootStyleUpdate = styler(renderer.domElement);
+        this.textStyleUpdate = styler(document.querySelector('.text'));
         this.perspective = renderer.domElement.style.perspective;
         this.lightModel = new DOMLights();
     }
@@ -71,6 +72,7 @@ export class SceneManager {
                 const updaters = this.splitTimelineObject(track);
                 this.rootStyleUpdate.set(updaters.scene);
                 this.logoStyleUpdate.set(updaters.logo);
+                this.textStyleUpdate.set(updaters.text);
             },
             complete: () => {
                 this.currentScene++;
@@ -78,8 +80,8 @@ export class SceneManager {
                 if (this.currentScene < this.movie.length) {
                     this.playNext();
                 } else {
-                    console.log('THE END');
-                    this.playing = false;
+                    // Horrible hack to resolve a state bug :/
+                    window.location.href = '/';
                 }
             }
         });
@@ -87,6 +89,9 @@ export class SceneManager {
 
     shadeScene() {
         const scene = this.getCurrentScene();
+        if(scene.type !== 'Scene') {
+            return;
+        }
         if(scene.pointLight) {
             scene.children.forEach(child => {
                 this.lightModel.updateGroup(child);
@@ -97,9 +102,13 @@ export class SceneManager {
 
     render() {
         requestAnimationFrame(this.render.bind(this));
+
         if(this.playing) {
             this.shadeScene();
-            this.renderer.render(this.getCurrentScene(), this.camera);
+            const scene = this.getCurrentScene();
+            if(scene.type === 'Scene') {
+                this.renderer.render(scene, this.camera);
+            }
         }
     };
 }

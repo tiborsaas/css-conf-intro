@@ -2,7 +2,7 @@ import { Scene, Vector3, Math as M, Group } from 'three';
 import { createFace } from '../three-css/CSSFace';
 
 const scene = new Scene();
-scene.pointLight = new Vector3(300, 120, 500);
+scene.pointLight = new Vector3(300, 120, 800);
 
 const COLS = 7;
 const ROWS = 5;

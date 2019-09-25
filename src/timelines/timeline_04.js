@@ -3,12 +3,15 @@ import { easing } from 'popmotion';
 import { Math as M } from 'three';
 
 const timeline = [
-    // { track: 'scene:filter', from: 'blur(0px)', to: 'blur(0px)', duration: 1 },
     [
+        { track: 'scene:opacity', from: 0, to: 1, duration: 5500 },
+        { track: 'setupCamera', to: 1000, duration: 3500 }
+    ],
+    [
+        { track: 'scene:filter', from: 'blur(10px)', to: 'blur(0px)', duration: 1000 },
         { track: 'logo:opacity', from: 1, to: 0, duration: 300 },
-        { track: 'setupCamera', from: 1000, to: 250, duration: 5000 },
-        '2000',
-        { track: 'spinCube', from: 45, to: 90, duration: 30000, ease: easing.easeOut },
+        { track: 'setupCamera', from: 1000, to: 250, duration: 8000 },
+        { track: 'spinCube', from: 45, to: 90, duration: 45000, ease: easing.easeOut },
     ],
     '-1000',
     { track: 'scene:filter', from: 'blur(0px)', to: 'blur(15px)', duration: 1000 },

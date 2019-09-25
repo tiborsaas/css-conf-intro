@@ -6,15 +6,22 @@ body, html {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
 .logo {
     left: 0;
     top: 0;
-    bottom: 0;
     right: 0;
-    background: transparent url(../assets/cssconfbp-logo.svg) no-repeat center center;
-    background-size: 50%;
+    bottom: 0;
+    background: transparent url(../assets/cssconfbp-logo_animated.svg) no-repeat center center;
+    background-size: 35%;
     z-index: 1;
-    position: fixed;
+    position: absolute;
 }
 
 .postprocess {
@@ -22,17 +29,38 @@ body, html {
     top: 0;
     bottom: 0;
     right: 0;
-    /* background-image: linear-gradient(0deg, #ff0000 16.67%, #27e620 16.67%, #27e620 33.33%, #001eff 33.33%, #001eff 50%, #ff0000 50%, #ff0000 66.67%, #27e620 66.67%, #27e620 83.33%, #001eff 83.33%, #001eff 100%); */
-    /* background-size: 12.00px 12.00px; */
-    /* background-image: linear-gradient(0deg, #09ff00 25%, #0cb806 25%, #0cb806 50%, #09ff00 50%, #09ff00 75%, #0cb806 75%, #0cb806 100%); */
+    background-image: linear-gradient(0deg, #ff0000 16.67%, #27e620 16.67%, #27e620 33.33%, #001eff 33.33%, #001eff 50%, #ff0000 50%, #ff0000 66.67%, #27e620 66.67%, #27e620 83.33%, #001eff 83.33%, #001eff 100%);
+    background-size: 12.00px 12.00px;
+    background-image: linear-gradient(0deg, #09ff00 25%, #0cb806 25%, #0cb806 50%, #09ff00 50%, #09ff00 75%, #0cb806 75%, #0cb806 100%);
     background-size: 8.00px 8.00px;
-    z-index: 0;
+    z-index: -3;
     position: fixed;
     mix-blend-mode: overlay; /* color */
     box-shadow: rgba(0, 0, 0, 0.75) 0 0 87px inset;
-    /* display: none; */
-    /* background: conic-gradient(#fff 0.25turn, #000 0.25turn 0.5turn, #fff 0.5turn 0.75turn, #000 0.75turn) top left / 4px 4px repeat; */
+    display: none;
+    background: conic-gradient(#fff 0.25turn, #000 0.25turn 0.5turn, #fff 0.5turn 0.75turn, #000 0.75turn) top left / 4px 4px repeat;
 }
+
+.text {
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 4rem;
+    line-height: 0rem;
+    color: #fff;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+    .text span {
+        opacity: 0;
+    }
 
 #chamber div {
     /* background-image: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,70,1) 38%, rgba(106,70,252,1) 38%, rgba(114,252,70,1) 87%, rgba(114,252,70,1) 87%, rgba(114,252,70,1) 87%, rgba(70,83,252,1) 87%); */

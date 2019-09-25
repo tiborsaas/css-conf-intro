@@ -5,11 +5,9 @@ import { backIn, easeInOut } from '@popmotion/easing';
 const { sin, PI } = Math;
 
 const timeline = [
-    { track: 'setupCamera', to: 750, duration: 1 },
+    { track: 'setupCamera', to: 800, duration: 1 },
     { track: 'scene:opacity', from: 0, to: 1, duration: 1500 },
     { track: 'spinField', to: 0, duration: 1 },
-    { track: 'spinField', from: 0, to: 360, duration: 8000 },
-    { track: 'scene:filter', from: 'blur(10px)', to: 'blur(0px)', duration: 1000 },
     { track: 'spinField', from: 0, to: 360, duration: 8000 },
     { track: 'scaleDown', from: 0, to: 5000, duration: 5000, ease: easeInOut },
     { track: 'logo:filter', from: 'invert(0)', to: 'invert(1)', duration: 3000 },
@@ -37,7 +35,6 @@ const context = {
         });
     },
     scaleDown: (val, ctx) => {
-        if(val === 0) return;
         const scene = ctx.getCurrentScene();
         scene.children.forEach((card, i) => {
             const x = i % WIDTH;

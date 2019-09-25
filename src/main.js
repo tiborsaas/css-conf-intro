@@ -4,21 +4,29 @@ import OrbitControls from 'orbit-controls-es6';
 import { CSS3DRenderer } from './three-utils/CSS3DRenderer';
 import { setPerspective } from "./three-utils/getPerspective";
 
-const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const MAX_WIDTH = localStorage.getItem('max_width') || 1;
+const WIDTH = window.innerWidth * MAX_WIDTH;
+const WIDE_RATIO = .3333;
+
+const camera = new PerspectiveCamera(75, WIDTH / WIDTH * WIDE_RATIO, 0.1, 1000);
 camera.position.x = 0;
 camera.position.y = 50;
 camera.position.z = 500;
 
 const renderer = new CSS3DRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setSize(WIDTH, WIDTH * WIDE_RATIO);
 renderer.domElement.id = 'root';
 document.body.appendChild(renderer.domElement);
+
+const overlayWrapper = document.querySelector('main');
+overlayWrapper.style.width = `${WIDTH}px`;
+overlayWrapper.style.height = `${WIDTH * WIDE_RATIO}px`;
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enabled = true;
 controls.maxDistance = 1500;
 controls.minDistance = 0;
 
-setPerspective(camera);
+setPerspective(camera, MAX_WIDTH);
 
 import('./lib/movie').then(movie => movie.start(renderer, camera));

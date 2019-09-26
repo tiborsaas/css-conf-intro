@@ -3,7 +3,7 @@ import { renderLines, animateScene } from "../lib/textUtils";
 const sceneRoot = document.querySelector('.text');
 
 const lines = [
-    'Visulas by',
+    'Visuals by',
     '@tiborsaas',
     'Live:JS 2019'
 ];

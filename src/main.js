@@ -4,9 +4,9 @@ import OrbitControls from 'orbit-controls-es6';
 import { CSS3DRenderer } from './three-utils/CSS3DRenderer';
 import { setPerspective } from "./three-utils/getPerspective";
 
-const MAX_WIDTH = localStorage.getItem('max_width') || 1;
+const MAX_WIDTH = 1;
+const WIDE_RATIO = window.innerHeight / window.innerWidth;
 const WIDTH = window.innerWidth * MAX_WIDTH;
-const WIDE_RATIO = .3333;
 
 const camera = new PerspectiveCamera(75, WIDTH / WIDTH * WIDE_RATIO, 0.1, 1000);
 camera.position.x = 0;

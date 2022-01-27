@@ -6,7 +6,7 @@
   "dependencies": {
     "orbit-controls-es6": "^2.0.0",
     "popmotion": "^8.7.0",
-    "three": "^0.108.0"
+    "three": "^0.137.0"
   },
   "devDependencies": {
     "cssnano": "^4.1.10",
